@@ -382,7 +382,6 @@
       lastHeight = h;
       canvas.width = w;
       canvas.height = h;
-      initFramebuffers();
   }
 
   var count = 0;
@@ -446,13 +445,6 @@
   }
   ambientSmoke();
 
-  window.addEventListener('orientationchange', function () {
-      setTimeout(function () {
-          canvas.width = canvas.clientWidth;
-          canvas.height = canvas.clientHeight;
-          initFramebuffers();
-      }, 200);
-  });
   </script>
 </body>
 </html>

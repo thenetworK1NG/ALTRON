@@ -554,9 +554,12 @@ header.site-header{
   .cmp-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   .nav{display:none}
-  .header-status{margin-left:auto}
+  .header-cta{margin-left:auto}
+  .header-status{display:none}
   .section{padding:84px 0}
 }
+@media (max-width:640px){
+  .header-cta{padding:.45rem 1rem;font-size:.72rem}
 @media (max-width:640px){
   .card-grid.four{grid-template-columns:1fr}
   .case-grid{grid-template-columns:1fr}
