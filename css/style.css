@@ -569,7 +569,6 @@ header.site-header{
   .footer-grid{grid-template-columns:1fr}
   .hero{padding:84px 0 64px}
   .hero-facts{line-height:1.9}
-  .hero-cta .btn{width:100%;justify-content:center}
   .phone{max-width:290px}
   .scene-head{margin-bottom:22px}
   .stage-col .stage-label{font-size:.64rem}
