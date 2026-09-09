@@ -1,444 +1,574 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ALTRON - Download</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #050505;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 2rem;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    .logo {
-      font-size: 5rem;
-      font-weight: 800;
-      letter-spacing: 0.3em;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 40px rgba(0, 255, 100, 0.4), 0 0 80px rgba(0, 255, 100, 0.2);
-      color: #00ff64;
-    }
-
-    .version {
-      font-size: 0.875rem;
-      color: rgba(0, 255, 100, 0.4);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 3rem;
-    }
-
-    .download-btn {
-      display: inline-block;
-      padding: 1rem 3.5rem;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: #050505;
-      background: #00ff64;
-      border: none;
-      border-radius: 999px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      pointer-events: all;
-      box-shadow: 0 0 30px rgba(0, 255, 100, 0.3);
-    }
-
-    .download-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 50px rgba(0, 255, 100, 0.5), 0 0 100px rgba(0, 255, 100, 0.2);
-    }
-
-    .download-btn:active {
-      transform: scale(0.96);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALTRON — Your personal intelligence, inside WhatsApp.</title>
+<meta name="description" content="ALTRON is a personal AI that lives on your computer and works through WhatsApp: remember chats, send approved messages, play YouTube audio, generate images, set alarms, capture your screen or webcam, and watch your space.">
+<meta property="og:title" content="ALTRON — Your personal intelligence, inside WhatsApp.">
+<meta property="og:description" content="A friendly AI on your computer that remembers your chats, sends files, captures your camera, and watches your space when you ask it to.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2305070a'/><text x='50' y='70' font-size='58' text-anchor='middle' fill='%2325d366' font-family='monospace' font-weight='bold'>w</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <canvas></canvas>
 
-  <div class="container">
-    <div class="logo">ALTRON</div>
-    <div class="version">v1.0.7</div>
-    <a href="https://github.com/thenetworK1NG/ALTRON/releases/download/v1.0.7/ALTRON-Setup-1.0.7.exe" class="download-btn">DOWNLOAD</a>
+<div class="noise" aria-hidden="true"></div>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+     <a class="logo" href="#top" aria-label="ALTRON home">
+      <span class="logo-cursor" aria-hidden="true"></span>
+      <span class="logo-word">ALTRON</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#anywhere" class="nav-link">how it helps</a>
+      <a href="#operator-mode" class="nav-link">see it work</a>
+      <a href="#capabilities" class="nav-link">features</a>
+      <a href="#security" class="nav-link">security</a>
+      <a href="#connect" class="nav-link">connect</a>
+    </nav>
+    <div class="header-status" title="Agent running on your machine">
+      <span class="status-dot" aria-hidden="true"></span>
+       <span class="status-text">ALTRON &middot; personal console</span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-glow" aria-hidden="true"></div>
+       <p class="hero-kicker mono">[ ALTRON / personal intelligence ] &nbsp;&middot;&nbsp; your computer, finally helpful</p>
+      <h1 class="hero-title">
+         Talk to your computer.<br>
+         <span class="green">It gets things done.</span>
+      </h1>
+      <p class="hero-sub">
+         ALTRON puts a helpful AI on a computer you already own and lets you talk
+         to it through WhatsApp. Ask about your chats, ask it to send an approved
+         message, request a file or camera clip, or arm the built-in sentry. No
+         technical language required. Just say what you need.
+      </p>
+      <div class="hero-cta">
+        <a href="#capabilities" class="btn btn-primary">
+           See what ALTRON can do
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#operator-mode" class="btn btn-ghost">See it in action</a>
+      </div>
+       <p class="hero-facts mono">remembers chats &middot; plays your music &middot; paints pictures &middot; sets alarms &middot; helps from anywhere</p>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <ul class="ticker-list">
+       <li>chat memory</li><li>approved messaging</li><li>youtube player</li><li>image generation</li><li>alarms &amp; overlays</li><li>sentry mode</li><li>file delivery</li><li>volume &amp; power</li><li>dashboard console</li><li>github help</li><li>one-click installer</li><li>simple WhatsApp commands</li>
+      </ul>
+      <ul class="ticker-list">
+       <li>chat memory</li><li>approved messaging</li><li>youtube player</li><li>image generation</li><li>alarms &amp; overlays</li><li>sentry mode</li><li>file delivery</li><li>volume &amp; power</li><li>dashboard console</li><li>github help</li><li>one-click installer</li><li>simple WhatsApp commands</li>
+      </ul>
+    </div>
   </div>
 
-  <script>
-  'use strict';
+  <section id="anywhere" class="section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="section-label mono">01 &nbsp;/&nbsp; anywhere</span>
+         <h2 class="section-title">If WhatsApp works,<br><span class="green">ALTRON works.</span></h2>
+        <p class="section-sub">
+          Your AI lives on a computer you already own &mdash; and you talk to it through
+          the app you already use every day. No special website to visit, no extra
+          app to download. Wherever you have phone signal, you have your computer.
+        </p>
+      </div>
+      <div class="card-grid four">
+        <article class="card" data-reveal>
+          <span class="card-index mono">A</span>
+          <h3 class="card-title">Any country</h3>
+          <p class="card-text">Wi-fi at the airport, roaming on the beach, a caf&eacute; in another city &mdash; same fast bot. Nothing to set up, nothing to configure.</p>
+        </article>
+        <article class="card" data-reveal style="--o:.5">
+          <span class="card-index mono">B</span>
+          <h3 class="card-title">Any device</h3>
+          <p class="card-text">Your phone, your tablet, or WhatsApp on your computer. The AI is just a chat, so every screen you own can talk to it.</p>
+        </article>
+        <article class="card" data-reveal style="--o:1">
+          <span class="card-index mono">C</span>
+          <h3 class="card-title">No monthly fee</h3>
+          <p class="card-text">It runs on your own computer. No hosting bill, no subscription, no surprise charges. Pay only for the AI model you pick.</p>
+        </article>
+        <article class="card" data-reveal style="--o:1.5">
+          <span class="card-index mono">D</span>
+          <h3 class="card-title">No new app</h3>
+          <p class="card-text">WhatsApp is already on your phone. Nothing new to learn, nothing new to install. You already know how to use this bot.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  var canvas = document.getElementsByTagName('canvas')[0];
-  canvas.width  = canvas.clientWidth;
-  canvas.height = canvas.clientHeight;
+  <section id="operator-mode" class="section section-dark">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="section-label mono">02 &nbsp;/&nbsp; see it work</span>
+        <h2 class="section-title">You text.<br>It <span class="green">does.</span></h2>
+        <p class="section-sub">
+          Text yourself anything &mdash; "push my code", "send me that file", "show me my
+          screen". The bot reads it, gets it done on your computer, and messages you
+          back. Like texting your own machine, and getting both a worker and an answer.
+        </p>
+      </div>
 
-  var config = {
-      TEXTURE_DOWNSAMPLE: 1,
-      DENSITY_DISSIPATION: 0.98,
-      VELOCITY_DISSIPATION: 0.99,
-      PRESSURE_DISSIPATION: 0.8,
-      PRESSURE_ITERATIONS: 25,
-      CURL: 30,
-      SPLAT_RADIUS: 0.005
-  };
+      <div class="scene" data-reveal>
+        <p class="scene-head mono">watch it happen &mdash; left is your phone, right is your computer</p>
 
-  var pointers = [];
-  var splatStack = [];
+        <div class="stage">
+          <div class="stage-col">
+            <p class="stage-label mono"><span class="label-dot" aria-hidden="true"></span> on your phone <em>whatsapp</em></p>
 
-  var _getWebGLContext = getWebGLContext(canvas);
-  var gl = _getWebGLContext.gl;
-  var ext = _getWebGLContext.ext;
-  var support_linear_float = _getWebGLContext.support_linear_float;
+            <div class="phone">
+              <div class="phone-notch" aria-hidden="true"></div>
+              <div class="phone-screen">
+                <div class="chat-head">
+                  <div class="chat-avatar" aria-hidden="true">w</div>
+                  <div class="chat-meta">
+                    <div class="chat-name">ALTRON</div>
+                    <div class="chat-status">online &middot; personal assistant</div>
+                  </div>
+                  <span class="chat-chip mono">OPER</span>
+                </div>
+                <div class="chat-body">
+                  <div class="msg you">
+                    push my changes for launch-plan and tell me what changed
+                    <span class="msg-meta"><span class="msg-time mono">13:41</span><svg class="msg-tick" viewBox="0 0 16 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 5.5 4.5 9 10 2.5M7 5.5 10.5 9 15 2.5"/></svg></span>
+                  </div>
+                  <div class="msg sys mono" data-status>on it &middot; pushing now</div>
+                  <div class="msg bot">
+                    Pushed to <b>launch-plan</b> &mdash; 3 commits. Quick summary:
+                    <span class="msg-lines">&ndash; README rewritten for the new features<br>&ndash; fixed the type error in check.js<br>&ndash; cleaned up old branches</span>
+                    <span class="msg-meta"><span class="msg-time mono">13:42</span></span>
+                  </div>
+                  <div class="msg you">
+                    nice. show me my screen so I can check the status
+                    <span class="msg-meta"><span class="msg-time mono">13:43</span><svg class="msg-tick tick-blue" viewBox="0 0 16 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 5.5 4.5 9 10 2.5M7 5.5 10.5 9 15 2.5"/></svg></span>
+                  </div>
+                  <div class="msg bot">Here's your screen:</div>
+                  <div class="msg img">
+                    <div class="snap">
+                      <div class="snap-bar"><span class="snap-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="snap-title mono">launch-plan &middot; status</span></div>
+                      <div class="snap-body">
+                        <div class="snap-row"><span class="snap-name mono">api service</span><span class="snap-state mono"><i class="ok"></i>running</span></div>
+                        <div class="snap-row"><span class="snap-name mono">worker</span><span class="snap-state mono"><i class="ok"></i>running</span></div>
+                        <div class="snap-row"><span class="snap-name mono">notifier</span><span class="snap-state mono"><i class="ok"></i>running</span></div>
+                        <div class="snap-foot mono"><i class="ok"></i>3/3 services up &middot; cpu 12%</div>
+                      </div>
+                    </div>
+                    <span class="msg-meta"><span class="msg-time mono">13:43</span></span>
+                  </div>
+                  <div class="msg bot">
+                    All three services are running and nothing is stuck. You're good to go home.
+                    <span class="msg-meta"><span class="msg-time mono">13:44</span></span>
+                  </div>
+                  <div class="msg typing2" aria-label="agent typing">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  function getWebGLContext(canvas) {
-      var params = {
-          alpha: false,
-          depth: false,
-          stencil: false,
-          antialias: false
-      };
-      var gl = canvas.getContext('webgl2', params);
-      var isWebGL2 = !!gl;
-      if (!isWebGL2) gl = canvas.getContext('webgl', params) || canvas.getContext('experimental-webgl', params);
-      var halfFloat = gl.getExtension('OES_texture_half_float');
-      var support_linear_float = gl.getExtension('OES_texture_half_float_linear');
-      if (isWebGL2) {
-          gl.getExtension('EXT_color_buffer_float');
-          support_linear_float = gl.getExtension('OES_texture_float_linear');
-      }
-      gl.clearColor(0.0, 0.0, 0.0, 1.0);
-      var internalFormat = isWebGL2 ? gl.RGBA16F : gl.RGBA;
-      var internalFormatRG = isWebGL2 ? gl.RG16F : gl.RGBA;
-      var formatRG = isWebGL2 ? gl.RG : gl.RGBA;
-      var texType = isWebGL2 ? gl.HALF_FLOAT : halfFloat.HALF_FLOAT_OES;
-      return {
-          gl: gl,
-          ext: {
-              internalFormat: internalFormat,
-              internalFormatRG: internalFormatRG,
-              formatRG: formatRG,
-              texType: texType
-          },
-          support_linear_float: support_linear_float
-      };
-  }
+          <div class="stage-wire" aria-hidden="true">
+            <span class="wire-arrow">&rarr;</span>
+            <span class="wire-tag mono">now it does this</span>
+          </div>
 
-  function pointerPrototype() {
-      this.id = -1;
-      this.x = 0;
-      this.y = 0;
-      this.dx = 0;
-      this.dy = 0;
-      this.down = false;
-      this.moved = false;
-      this.color = [30, 0, 300];
-  }
+          <div class="stage-col">
+             <p class="stage-label mono"><span class="label-dot dot-out" aria-hidden="true"></span> on your computer <em>ALTRON console</em></p>
 
-  pointers.push(new pointerPrototype());
+            <div class="term">
+              <div class="term-bar">
+                <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="term-title mono">ALTRON &middot; personal console</span>
+                <span class="term-live mono"><span class="dot live-dot"></span>live</span>
+              </div>
+              <div class="term-body">
+                <div class="tline" data-t="100"><span class="t-p">ALTRON/assistant</span> <span class="t-c">&rarr;</span> session resume</div>
+                <div class="tline" data-t="300">incoming from <span class="t-p">you</span> <span class="t-c">&rarr;</span> <span class="t-y">"push my changes and tell me what changed"</span></div>
+                <div class="tline" data-t="800"><span class="t-g">$</span> git add -A <span class="t-g">&amp;&amp;</span> git commit -m "readme, type fix, cleanup"</div>
+                <div class="tline" data-t="1250"><span class="t-g">$</span> git push -u origin main</div>
+                <div class="tline" data-t="1700"><span class="t-o">ok</span> pushed &middot; 3 commits &middot; summary sent</div>
+                <div class="tline" data-t="2950">incoming from <span class="t-p">you</span> <span class="t-c">&rarr;</span> <span class="t-y">"show me my screen so I can check the status"</span></div>
+                <div class="tline" data-t="3400"><span class="t-o">ok</span> services checked &middot; 3/3 up &middot; cpu 12%</div>
+                <div class="tline" data-t="4100"><span class="t-o">ok</span> screenshot sent <span class="t-c">&rarr;</span> your whatsapp</div>
+                <div class="tline" data-t="4900"><span class="t-g">$</span> done in 9s &middot; 0 errors</div>
+              </div>
+              <span class="term-caret" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="scene-note mono">message &rarr; action &rarr; result &middot; everything in sync</p>
+    </div>
+  </section>
 
-  var GLProgram = function () {
-      function GLProgram(vertexShader, fragmentShader) {
-          if (!(this instanceof GLProgram))
-              throw new TypeError("Cannot call a class as a function");
-          this.uniforms = {};
-          this.program = gl.createProgram();
-          gl.attachShader(this.program, vertexShader);
-          gl.attachShader(this.program, fragmentShader);
-          gl.linkProgram(this.program);
-          if (!gl.getProgramParameter(this.program, gl.LINK_STATUS))
-              throw gl.getProgramInfoLog(this.program);
-          var uniformCount = gl.getProgramParameter(this.program, gl.ACTIVE_UNIFORMS);
-          for (var i = 0; i < uniformCount; i++) {
-              var uniformName = gl.getActiveUniform(this.program, i).name;
-              this.uniforms[uniformName] = gl.getUniformLocation(this.program, uniformName);
-          }
-      }
-      GLProgram.prototype.bind = function bind() {
-          gl.useProgram(this.program);
-      };
-      return GLProgram;
-  }();
+  <section id="capabilities" class="section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="section-label mono">03 &nbsp;/&nbsp; capabilities</span>
+        <h2 class="section-title">Not just chat.<br>A <span class="green">helper that acts.</span></h2>
+        <p class="section-sub">
+          Other bots only talk. This one also does &mdash; it runs things, moves files,
+          and grows into whatever kind of helper you need it to be.
+        </p>
+      </div>
 
-  function compileShader(type, source) {
-      var shader = gl.createShader(type);
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
-          throw gl.getShaderInfoLog(shader);
-      return shader;
-  }
+      <div class="bento">
+        <article class="bento-cell operator" data-reveal>
+           <h3 class="bento-title">A helper that actually acts</h3>
+           <p class="bento-text">Ask in normal language and ALTRON does the work on your computer &mdash; then brings the result back to your WhatsApp. No buttons to hunt for and no technical vocabulary.</p>
+           <p class="bento-stats mono">ask &middot; approve &middot; done</p>
+        </article>
 
-  var baseVertexShader = compileShader(gl.VERTEX_SHADER, 'precision highp float; precision mediump sampler2D; attribute vec2 aPosition; varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB; uniform vec2 texelSize; void main () {     vUv = aPosition * 0.5 + 0.5;     vL = vUv - vec2(texelSize.x, 0.0);     vR = vUv + vec2(texelSize.x, 0.0);     vT = vUv + vec2(0.0, texelSize.y);     vB = vUv - vec2(0.0, texelSize.y);     gl_Position = vec4(aPosition, 0.0, 1.0); }');
-  var clearShader = compileShader(gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; uniform sampler2D uTexture; uniform float value; void main () {     gl_FragColor = value * texture2D(uTexture, vUv); }');
-  var displayShader = compileShader(gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; uniform sampler2D uTexture; void main () {     gl_FragColor = texture2D(uTexture, vUv); }');
-  var splatShader = compileShader(gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; uniform sampler2D uTarget; uniform float aspectRatio; uniform vec3 color; uniform vec2 point; uniform float radius; void main () {     vec2 p = vUv - point.xy;     p.x *= aspectRatio;     vec3 splat = exp(-dot(p, p) / radius) * color;     vec3 base = texture2D(uTarget, vUv).xyz;     gl_FragColor = vec4(base + splat, 1.0); }');
-  var advectionManualFilteringShader = compileShader(gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; uniform sampler2D uVelocity; uniform sampler2D uSource; uniform vec2 texelSize; uniform float dt; uniform float dissipation; vec4 bilerp (in sampler2D sam, in vec2 p) {     vec4 st;     st.xy = floor(p - 0.5) + 0.5;     st.zw = st.xy + 1.0;     vec4 uv = st * texelSize.xyxy;     vec4 a = texture2D(sam, uv.xy);     vec4 b = texture2D(sam, uv.zy);     vec4 c = texture2D(sam, uv.xw);     vec4 d = texture2D(sam, uv.zw);     vec2 f = p - st.xy;     return mix(mix(a, b, f.x), mix(c, d, f.x), f.y); } void main () {     vec2 coord = gl_FragCoord.xy - dt * texture2D(uVelocity, vUv).xy;     gl_FragColor = dissipation * bilerp(uSource, coord);     gl_FragColor.a = 1.0; }');
-  var advectionShader = compileShader(gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; uniform sampler2D uVelocity; uniform sampler2D uSource; uniform vec2 texelSize; uniform float dt; uniform float dissipation; void main () {     vec2 coord = vUv - dt * texture2D(uVelocity, vUv).xy * texelSize;     gl_FragColor = dissipation * texture2D(uSource, coord); }');
-  var divergenceShader = compileShader(gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB; uniform sampler2D uVelocity; vec2 sampleVelocity (in vec2 uv) {     vec2 multiplier = vec2(1.0, 1.0);     if (uv.x < 0.0) { uv.x = 0.0; multiplier.x = -1.0; }     if (uv.x > 1.0) { uv.x = 1.0; multiplier.x = -1.0; }     if (uv.y < 0.0) { uv.y = 0.0; multiplier.y = -1.0; }     if (uv.y > 1.0) { uv.y = 1.0; multiplier.y = -1.0; }     return multiplier * texture2D(uVelocity, uv).xy; } void main () {     float L = sampleVelocity(vL).x;     float R = sampleVelocity(vR).x;     float T = sampleVelocity(vT).y;     float B = sampleVelocity(vB).y;     float div = 0.5 * (R - L + T - B);     gl_FragColor = vec4(div, 0.0, 0.0, 1.0); }');
-  var curlShader = compileShader(gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB; uniform sampler2D uVelocity; void main () {     float L = texture2D(uVelocity, vL).y;     float R = texture2D(uVelocity, vR).y;     float T = texture2D(uVelocity, vT).x;     float B = texture2D(uVelocity, vB).x;     float vorticity = R - L - T + B;     gl_FragColor = vec4(vorticity, 0.0, 0.0, 1.0); }');
-  var vorticityShader = compileShader(gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB; uniform sampler2D uVelocity; uniform sampler2D uCurl; uniform float curl; uniform float dt; void main () {     float L = texture2D(uCurl, vL).y;     float R = texture2D(uCurl, vR).y;     float T = texture2D(uCurl, vT).x;     float B = texture2D(uCurl, vB).x;     float C = texture2D(uCurl, vUv).x;     vec2 force = vec2(abs(T) - abs(B), abs(R) - abs(L));     force *= 1.0 / length(force + 0.00001) * curl * C;     vec2 vel = texture2D(uVelocity, vUv).xy;     gl_FragColor = vec4(vel + force * dt, 0.0, 1.0); }');
-  var pressureShader = compileShader(gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB; uniform sampler2D uPressure; uniform sampler2D uDivergence; vec2 boundary (in vec2 uv) {     uv = min(max(uv, 0.0), 1.0);     return uv; } void main () {     float L = texture2D(uPressure, boundary(vL)).x;     float R = texture2D(uPressure, boundary(vR)).x;     float T = texture2D(uPressure, boundary(vT)).x;     float B = texture2D(uPressure, boundary(vB)).x;     float C = texture2D(uPressure, vUv).x;     float divergence = texture2D(uDivergence, vUv).x;     float pressure = (L + R + B + T - divergence) * 0.25;     gl_FragColor = vec4(pressure, 0.0, 0.0, 1.0); }');
-  var gradientSubtractShader = compileShader(gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB; uniform sampler2D uPressure; uniform sampler2D uVelocity; vec2 boundary (in vec2 uv) {     uv = min(max(uv, 0.0), 1.0);     return uv; } void main () {     float L = texture2D(uPressure, boundary(vL)).x;     float R = texture2D(uPressure, boundary(vR)).x;     float T = texture2D(uPressure, boundary(vT)).x;     float B = texture2D(uPressure, boundary(vB)).x;     vec2 velocity = texture2D(uVelocity, vUv).xy;     velocity.xy -= vec2(R - L, T - B);     gl_FragColor = vec4(velocity, 0.0, 1.0); }');
+        <article class="bento-cell" data-reveal>
+          <span class="bento-index mono">01</span>
+           <h3 class="bento-title">Your chats, remembered</h3>
+           <p class="bento-text">Ask what you and someone discussed today, find an old detail, or request a full chat export.</p>
+        </article>
 
-  var textureWidth  = void 0;
-  var textureHeight = void 0;
-  var density       = void 0;
-  var velocity      = void 0;
-  var divergence    = void 0;
-  var curl          = void 0;
-  var pressure      = void 0;
+        <article class="bento-cell" data-reveal style="--o:.5">
+          <span class="bento-index mono">02</span>
+           <h3 class="bento-title">Messages with a safety check</h3>
+           <p class="bento-text">Tell ALTRON what to say. It shows you the exact person and draft first, then sends only after you reply YES.</p>
+        </article>
 
-  initFramebuffers();
+        <article class="bento-cell" data-reveal>
+          <span class="bento-index mono">03</span>
+           <h3 class="bento-title">Webcam when you ask</h3>
+           <p class="bento-text">Request a webcam picture or a short video clip. Clips are capped at 60 seconds and delivered straight to your private chat.</p>
+        </article>
 
-  var clearProgram           = new GLProgram(baseVertexShader, clearShader);
-  var displayProgram         = new GLProgram(baseVertexShader, displayShader);
-  var splatProgram           = new GLProgram(baseVertexShader, splatShader);
-  var advectionProgram       = new GLProgram(baseVertexShader, support_linear_float ? advectionShader : advectionManualFilteringShader);
-  var divergenceProgram      = new GLProgram(baseVertexShader, divergenceShader);
-  var curlProgram            = new GLProgram(baseVertexShader, curlShader);
-  var vorticityProgram       = new GLProgram(baseVertexShader, vorticityShader);
-  var pressureProgram        = new GLProgram(baseVertexShader, pressureShader);
-  var gradienSubtractProgram = new GLProgram(baseVertexShader, gradientSubtractShader);
+        <article class="bento-cell" data-reveal style="--o:.5">
+          <span class="bento-index mono">04</span>
+           <h3 class="bento-title">Built-in sentry mode</h3>
+           <p class="bento-text">Arm it when you leave. Local motion detection can send you a camera alert, with a cooldown so your phone does not get spammed.</p>
+        </article>
 
-  function initFramebuffers() {
-      textureWidth  = gl.drawingBufferWidth >> config.TEXTURE_DOWNSAMPLE;
-      textureHeight = gl.drawingBufferHeight >> config.TEXTURE_DOWNSAMPLE;
-      var iFormat   = ext.internalFormat;
-      var iFormatRG = ext.internalFormatRG;
-      var formatRG  = ext.formatRG;
-      var texType   = ext.texType;
-      density    = createDoubleFBO(0, textureWidth, textureHeight, iFormat, gl.RGBA, texType, support_linear_float ? gl.LINEAR : gl.NEAREST);
-      velocity   = createDoubleFBO(2, textureWidth, textureHeight, iFormatRG, formatRG, texType, support_linear_float ? gl.LINEAR : gl.NEAREST);
-      divergence = createFBO(4, textureWidth, textureHeight, iFormatRG, formatRG, texType, gl.NEAREST);
-      curl       = createFBO(5, textureWidth, textureHeight, iFormatRG, formatRG, texType, gl.NEAREST);
-      pressure   = createDoubleFBO(6, textureWidth, textureHeight, iFormatRG, formatRG, texType, gl.NEAREST);
-  }
+        <article class="bento-cell" data-reveal style="--o:1">
+          <span class="bento-index mono">05</span>
+           <h3 class="bento-title">It keeps itself going</h3>
+           <p class="bento-text">Internet drops, restarts, and session problems are handled automatically where possible. You only get asked for a QR scan when WhatsApp truly needs one.</p>
+        </article>
 
-  function createFBO(texId, w, h, internalFormat, format, type, param) {
-      gl.activeTexture(gl.TEXTURE0 + texId);
-      var texture = gl.createTexture();
-      gl.bindTexture(gl.TEXTURE_2D, texture);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, param);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, param);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-      gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, w, h, 0, format, type, null);
-      var fbo = gl.createFramebuffer();
-      gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
-      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
-      gl.viewport(0, 0, w, h);
-      gl.clear(gl.COLOR_BUFFER_BIT);
-      return [texture, fbo, texId];
-  }
+        <article class="bento-cell" data-reveal style="--o:.5">
+          <span class="bento-index mono">06</span>
+           <h3 class="bento-title">Private by design</h3>
+           <p class="bento-text">It runs on your computer. Camera controls and chat intelligence stay owner-only, with explicit confirmation for actions that contact other people.</p>
+        </article>
 
-  function createDoubleFBO(texId, w, h, internalFormat, format, type, param) {
-      var fbo1 = createFBO(texId, w, h, internalFormat, format, type, param);
-      var fbo2 = createFBO(texId + 1, w, h, internalFormat, format, type, param);
-      return {
-          get first()  { return fbo1; },
-          get second() { return fbo2; },
-          swap: function () {
-              var temp = fbo1; fbo1 = fbo2; fbo2 = temp;
-          }
-      };
-  }
+        <article class="bento-cell" data-reveal style="--o:1">
+          <span class="bento-index mono">07</span>
+           <h3 class="bento-title">Text, painted</h3>
+           <p class="bento-text">"Send me an image of a fox in anime style" &mdash; pick from photorealistic, 3d render, watercolor, pixel art and more. Add an image-generation key once and pictures come back watermark-free.</p>
+        </article>
 
-  var blit = function () {
-      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, -1, 1, 1, 1, 1, -1]), gl.STATIC_DRAW);
-      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer());
-      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 0, 2, 3]), gl.STATIC_DRAW);
-      gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-      gl.enableVertexAttribArray(0);
-      return function (destination) {
-          gl.bindFramebuffer(gl.FRAMEBUFFER, destination);
-          gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
-      };
-  }();
+        <article class="bento-cell" data-reveal style="--o:.5">
+          <span class="bento-index mono">08</span>
+           <h3 class="bento-title">YouTube on tap</h3>
+           <p class="bento-text">"Play me lo-fi beats" streams audio straight through your speakers. Queue whole lists at once, then pause, skip or seek from your phone &mdash; music your computer plays in one message.</p>
+        </article>
 
-  var lastTime = Date.now();
-  update();
+        <article class="bento-cell" data-reveal style="--o:.5">
+          <span class="bento-index mono">09</span>
+           <h3 class="bento-title">Alarms that ring</h3>
+           <p class="bento-text">"Set an alarm for 07:30, wake-up call" &mdash; your PC rings a siren and pops a full-screen overlay with snooze, so nothing important slips past. Set, list and cancel them from a text.</p>
+        </article>
 
-  function update() {
-      resizeCanvas();
-      var dt = Math.min((Date.now() - lastTime) / 1000, 0.016);
-      lastTime = Date.now();
-      gl.viewport(0, 0, textureWidth, textureHeight);
-      if (splatStack.length > 0) {
-          for (var m = 0; m < splatStack.pop(); m++) {
-              var color = [Math.random() * 5 + 5, Math.random() * 8 + 2, Math.random() * 2 + 0.5];
-              var x = canvas.width * Math.random();
-              var y = canvas.height * Math.random();
-              var dx = 1000 * (Math.random() - 0.5);
-              var dy = 1000 * (Math.random() - 0.5);
-              splat(x, y, dx, dy, color);
-          }
-      }
-      advectionProgram.bind();
-      gl.uniform2f(advectionProgram.uniforms.texelSize, 1.0 / textureWidth, 1.0 / textureHeight);
-      gl.uniform1i(advectionProgram.uniforms.uVelocity, velocity.first[2]);
-      gl.uniform1i(advectionProgram.uniforms.uSource, velocity.first[2]);
-      gl.uniform1f(advectionProgram.uniforms.dt, dt);
-      gl.uniform1f(advectionProgram.uniforms.dissipation, config.VELOCITY_DISSIPATION);
-      blit(velocity.second[1]);
-      velocity.swap();
-      gl.uniform1i(advectionProgram.uniforms.uVelocity, velocity.first[2]);
-      gl.uniform1i(advectionProgram.uniforms.uSource, density.first[2]);
-      gl.uniform1f(advectionProgram.uniforms.dissipation, config.DENSITY_DISSIPATION);
-      blit(density.second[1]);
-      density.swap();
-      for (var i = 0, len = pointers.length; i < len; i++) {
-          var pointer = pointers[i];
-          if (pointer.moved) {
-              splat(pointer.x, pointer.y, pointer.dx, pointer.dy, pointer.color);
-              pointer.moved = false;
-          }
-      }
-      curlProgram.bind();
-      gl.uniform2f(curlProgram.uniforms.texelSize, 1.0 / textureWidth, 1.0 / textureHeight);
-      gl.uniform1i(curlProgram.uniforms.uVelocity, velocity.first[2]);
-      blit(curl[1]);
-      vorticityProgram.bind();
-      gl.uniform2f(vorticityProgram.uniforms.texelSize, 1.0 / textureWidth, 1.0 / textureHeight);
-      gl.uniform1i(vorticityProgram.uniforms.uVelocity, velocity.first[2]);
-      gl.uniform1i(vorticityProgram.uniforms.uCurl, curl[2]);
-      gl.uniform1f(vorticityProgram.uniforms.curl, config.CURL);
-      gl.uniform1f(vorticityProgram.uniforms.dt, dt);
-      blit(velocity.second[1]);
-      velocity.swap();
-      divergenceProgram.bind();
-      gl.uniform2f(divergenceProgram.uniforms.texelSize, 1.0 / textureWidth, 1.0 / textureHeight);
-      gl.uniform1i(divergenceProgram.uniforms.uVelocity, velocity.first[2]);
-      blit(divergence[1]);
-      clearProgram.bind();
-      var pressureTexId = pressure.first[2];
-      gl.activeTexture(gl.TEXTURE0 + pressureTexId);
-      gl.bindTexture(gl.TEXTURE_2D, pressure.first[0]);
-      gl.uniform1i(clearProgram.uniforms.uTexture, pressureTexId);
-      gl.uniform1f(clearProgram.uniforms.value, config.PRESSURE_DISSIPATION);
-      blit(pressure.second[1]);
-      pressure.swap();
-      pressureProgram.bind();
-      gl.uniform2f(pressureProgram.uniforms.texelSize, 1.0 / textureWidth, 1.0 / textureHeight);
-      gl.uniform1i(pressureProgram.uniforms.uDivergence, divergence[2]);
-      pressureTexId = pressure.first[2];
-      gl.activeTexture(gl.TEXTURE0 + pressureTexId);
-      for (var _i = 0; _i < config.PRESSURE_ITERATIONS; _i++) {
-          gl.bindTexture(gl.TEXTURE_2D, pressure.first[0]);
-          gl.uniform1i(pressureProgram.uniforms.uPressure, pressureTexId);
-          blit(pressure.second[1]);
-          pressure.swap();
-      }
-      gradienSubtractProgram.bind();
-      gl.uniform2f(gradienSubtractProgram.uniforms.texelSize, 1.0 / textureWidth, 1.0 / textureHeight);
-      gl.uniform1i(gradienSubtractProgram.uniforms.uPressure, pressure.first[2]);
-      gl.uniform1i(gradienSubtractProgram.uniforms.uVelocity, velocity.first[2]);
-      blit(velocity.second[1]);
-      velocity.swap();
-      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
-      displayProgram.bind();
-      gl.uniform1i(displayProgram.uniforms.uTexture, density.first[2]);
-      blit(null);
-      requestAnimationFrame(update);
-  }
+        <article class="bento-cell" data-reveal style="--o:1">
+          <span class="bento-index mono">10</span>
+           <h3 class="bento-title">Control from a text</h3>
+           <p class="bento-text">Turn the PC's sound up or down, mute it, request a shutdown that waits for your YES, or stop the current task instantly with "/bot stop". Your machine, on your say-so.</p>
+        </article>
 
-  function splat(x, y, dx, dy, color) {
-      splatProgram.bind();
-      gl.uniform1i(splatProgram.uniforms.uTarget, velocity.first[2]);
-      gl.uniform1f(splatProgram.uniforms.aspectRatio, canvas.width / canvas.height);
-      gl.uniform2f(splatProgram.uniforms.point, x / canvas.width, 1.0 - y / canvas.height);
-      gl.uniform3f(splatProgram.uniforms.color, dx, -dy, 1.0);
-      gl.uniform1f(splatProgram.uniforms.radius, config.SPLAT_RADIUS);
-      blit(velocity.second[1]);
-      velocity.swap();
-      gl.uniform1i(splatProgram.uniforms.uTarget, density.first[2]);
-      gl.uniform3f(splatProgram.uniforms.color, color[0] * 0.3, color[1] * 0.3, color[2] * 0.3);
-      blit(density.second[1]);
-      density.swap();
-  }
+        <article class="bento-cell extend" data-reveal style="--o:1">
+          <h3 class="bento-title">It becomes whatever you need</h3>
+          <p class="bento-text">Today it answers your messages. Tomorrow it's your assistant, your errand-runner, your night-shift worker. Anything your computer can do, you can teach it to do from a text. You decide what it becomes next.</p>
+          <p class="bento-stats mono">describe it &middot; it'll do it &middot; done</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  function resizeCanvas() {
-      (canvas.width !== canvas.clientWidth || canvas.height !== canvas.clientHeight) &&
-          (canvas.width = canvas.clientWidth, canvas.height = canvas.clientHeight, initFramebuffers());
-  }
+  <section id="security" class="section section-dark">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="section-label mono">04 &nbsp;/&nbsp; security camera</span>
+        <h2 class="section-title">A little extra peace<br>of <span class="green">mind.</span></h2>
+        <p class="section-sub">
+          ALTRON can use a webcam connected to your computer when you ask it to.
+          Take a picture, record a short clip, or arm Sentry mode before you leave.
+          It watches locally and only sends an alert when something changes.
+        </p>
+      </div>
 
-  var count = 0;
-  var colorArr = [0.15 + Math.random() * 0.2, 0.8 + Math.random() * 0.2, 0.2 + Math.random() * 0.1];
+      <div class="security-showcase" data-reveal>
+        <div class="security-screen">
+          <div class="security-screen-bar">
+            <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="mono">ALTRON / security camera</span>
+            <span class="security-live mono"><span class="status-dot"></span> armed</span>
+          </div>
+          <div class="security-visual">
+            <div class="security-frame-lines" aria-hidden="true"></div>
+            <div class="security-scan" aria-hidden="true"></div>
+            <div class="security-center-mark">A</div>
+            <div class="security-corner security-corner-tl" aria-hidden="true"></div>
+            <div class="security-corner security-corner-tr" aria-hidden="true"></div>
+            <div class="security-corner security-corner-bl" aria-hidden="true"></div>
+            <div class="security-corner security-corner-br" aria-hidden="true"></div>
+            <span class="security-time mono">CAM 01 &middot; LOCAL ONLY</span>
+            <span class="security-event mono"><i></i> no unusual movement</span>
+          </div>
+        </div>
+        <div class="security-copy">
+          <div class="security-copy-row"><span class="security-copy-icon">01</span><div><h3>Ask for a picture</h3><p>“Send me a picture from the webcam.” ALTRON captures it and sends it to your private WhatsApp chat.</p></div></div>
+          <div class="security-copy-row"><span class="security-copy-icon">02</span><div><h3>Ask for a short video</h3><p>Request up to 60 seconds of footage. New clips are encoded for normal WhatsApp playback, with microphone audio when available.</p></div></div>
+          <div class="security-copy-row"><span class="security-copy-icon">03</span><div><h3>Arm Sentry</h3><p>Motion alerts are sent to you with a cooldown. You stay in control: arm it, disarm it, and tune it from the ALTRON console.</p></div></div>
+        </div>
+      </div>
+      <p class="security-note mono">no live stream &middot; no cloud camera account &middot; your computer, your rules</p>
+    </div>
+  </section>
 
-  canvas.addEventListener('mousemove', function (e) {
-      count++;
-      if (count > 25) {
-          colorArr = [0.15 + Math.random() * 0.2, 0.8 + Math.random() * 0.2, 0.2 + Math.random() * 0.1];
-          count = 0;
-      }
-      pointers[0].down = true;
-      pointers[0].color = colorArr;
-      pointers[0].moved = pointers[0].down;
-      pointers[0].dx = (e.offsetX - pointers[0].x) * 10.0;
-      pointers[0].dy = (e.offsetY - pointers[0].y) * 10.0;
-      pointers[0].x = e.offsetX;
-      pointers[0].y = e.offsetY;
-  });
+  <section id="how" class="section section-dark">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="section-label mono">05 &nbsp;/&nbsp; how it works</span>
+        <h2 class="section-title">Your own AI in <span class="green">three easy steps.</span></h2>
+      </div>
+      <div class="steps">
+        <article class="step" data-reveal>
+          <span class="step-num" aria-hidden="true">01</span>
+          <h3 class="step-title">Scan a code</h3>
+          <p class="step-text">Start the app and a QR code appears. Open WhatsApp, go to Linked Devices, and scan it with your phone. That's it &mdash; the bot is connected.</p>
+        </article>
+        <article class="step" data-reveal style="--o:.5">
+          <span class="step-num" aria-hidden="true">02</span>
+          <h3 class="step-title">Text yourself</h3>
+          <p class="step-text">Send a message to your own number. Your bot says hi, tells you it's ready, and waits for your first request.</p>
+        </article>
+        <article class="step" data-reveal style="--o:1">
+          <span class="step-num" aria-hidden="true">03</span>
+          <h3 class="step-title">Ask for anything</h3>
+          <p class="step-text">Push, build, screenshot, send a file, look something up. Name it, and the answer reappears in your chat.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  canvas.addEventListener('touchmove', function (e) {
-      e.preventDefault();
-      var touches = e.targetTouches;
-      count++;
-      if (count > 25) {
-          colorArr = [0.15 + Math.random() * 0.2, 0.8 + Math.random() * 0.2, 0.2 + Math.random() * 0.1];
-          count = 0;
-      }
-      for (var i = 0, len = touches.length; i < len; i++) {
-          if (i >= pointers.length) pointers.push(new pointerPrototype());
-          pointers[i].id = touches[i].identifier;
-          pointers[i].down = true;
-          pointers[i].x = touches[i].pageX;
-          pointers[i].y = touches[i].pageY;
-          pointers[i].color = colorArr;
-          var pointer = pointers[i];
-          pointer.moved = pointer.down;
-          pointer.dx = (touches[i].pageX - pointer.x) * 10.0;
-          pointer.dy = (touches[i].pageY - pointer.y) * 10.0;
-          pointer.x = touches[i].pageX;
-          pointer.y = touches[i].pageY;
-      }
-  }, false);
+  <section id="compare" class="section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="section-label mono">06 &nbsp;/&nbsp; the difference</span>
+          <h2 class="section-title">Most assistants only talk.<br>ALTRON <span class="green">does things.</span></h2>
+      </div>
+      <div class="cmp-grid">
+        <div class="cmp cmp-other" data-reveal>
+          <h3 class="cmp-title">The usual bot</h3>
+          <ul class="cmp-list">
+            <li><span class="mark">-</span>Just replies with words &mdash; it never actually does anything</li>
+            <li><span class="mark">-</span>Lives on someone else's website, not your computer</li>
+            <li><span class="mark">-</span>Knows nothing about you or your files</li>
+            <li><span class="mark">-</span>Can only do whatever it shipped with, forever</li>
+            <li><span class="mark">-</span>Needs a whole other app or website to visit</li>
+          </ul>
+        </div>
+        <div class="cmp cmp-us" data-reveal style="--o:.5">
+          <h3 class="cmp-title">ALTRON</h3>
+          <ul class="cmp-list">
+            <li><span class="mark">+</span>Does the job for real &mdash; files, code, tasks, results</li>
+            <li><span class="mark">+</span>Runs on your own computer, on your terms</li>
+            <li><span class="mark">+</span>Knows your projects, your files, your history</li>
+            <li><span class="mark">+</span>Grows with you &mdash; teach it anything new anytime</li>
+            <li><span class="mark">+</span>Lives inside the WhatsApp you already use</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // Auto-splats for ambient smoke
-  function autoSplat() {
-      var color = [0.15 + Math.random() * 0.2, 0.8 + Math.random() * 0.2, 0.2 + Math.random() * 0.1];
-      var x = canvas.width * Math.random();
-      var y = canvas.height * Math.random();
-      var dx = 200 * (Math.random() - 0.5);
-      var dy = 200 * (Math.random() - 0.5);
-      splat(x, y, dx, dy, color);
-      setTimeout(autoSplat, 800 + Math.random() * 1200);
-  }
-  autoSplat();
-  </script>
+  <section id="connect" class="section section-dark">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="section-label mono">07 &nbsp;/&nbsp; connect</span>
+        <h2 class="section-title">Getting connected is <span class="green">a scan, not a setup.</span></h2>
+        <p class="section-sub">
+          No installers to wrestle with, no lines of code to paste. The whole thing
+          connects with QR codes &mdash; the same easy way you link WhatsApp on a new
+          phone. Two scans, and you're talking to your computer.
+        </p>
+      </div>
+
+      <div class="connect-grid">
+        <article class="connect-card" data-reveal>
+          <span class="connect-step mono">scan 1</span>
+          <div class="connect-qr">
+            <img src="assets/qr-whatsapp.svg" alt="WhatsApp QR code" width="150" height="150" loading="lazy">
+          </div>
+          <h3 class="connect-title">Link WhatsApp</h3>
+          <p class="connect-text">
+            Open WhatsApp, go to <b>Linked Devices</b>, and scan the code with your
+            phone. One scan and your bot is in your pocket &mdash; answering your texts
+            from anywhere.
+          </p>
+          <p class="connect-note mono">like linking a new phone &middot; done in seconds</p>
+        </article>
+
+        <article class="connect-card connect-highlight" data-reveal style="--o:.5">
+          <span class="connect-step mono">scan 2</span>
+          <div class="connect-qr">
+            <img src="assets/qr-github.svg" alt="GitHub QR code" width="150" height="150" loading="lazy">
+          </div>
+          <h3 class="connect-title">Link GitHub</h3>
+          <p class="connect-text">
+            The same easy trick. Approve the login and your bot can push code,
+            create projects and manage your repositories &mdash; straight from a text
+            message.
+          </p>
+          <p class="connect-note mono">one approve &middot; your repos, from your phone</p>
+        </article>
+      </div>
+
+      <p class="connect-outro" data-reveal>
+        That's the whole setup. <span class="green">No cables, no code, no account juggling.</span>
+        The one-click installer walks you through all of it &mdash; requirements, an optional
+        image-generation key, GitHub, then the QR link. Two minutes, and you're live.
+      </p>
+    </div>
+  </section>
+
+  <section id="usecases" class="section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="section-label mono">08 &nbsp;/&nbsp; everyday uses</span>
+        <h2 class="section-title">One bot. So many ways<br>to <span class="green">use it.</span></h2>
+        <p class="section-sub">
+          Start simple &mdash; a friend who answers your messages. Then watch it become
+          whatever keeps coming up in your day.
+        </p>
+      </div>
+      <div class="case-grid">
+        <article class="case" data-reveal>
+          <span class="case-index mono">01</span>
+          <h3 class="case-title">Working from anywhere</h3>
+          <p class="case-text">Push that finished code from the train seat &mdash; no laptop needed, ever.</p>
+        </article>
+        <article class="case" data-reveal style="--o:.4">
+          <span class="case-index mono">02</span>
+          <h3 class="case-title">Peeking at your computer</h3>
+          <p class="case-text">Ask for a screenshot and see what's running back home, in a second.</p>
+        </article>
+        <article class="case" data-reveal style="--o:.8">
+          <span class="case-index mono">03</span>
+          <h3 class="case-title">Help with your code</h3>
+          <p class="case-text">Send it a piece of code and get clear, helpful feedback on the spot.</p>
+        </article>
+        <article class="case" data-reveal style="--o:1.2">
+          <span class="case-index mono">04</span>
+          <h3 class="case-title">Getting any file</h3>
+          <p class="case-text">Need a document that's on your computer? It lands in your chat.</p>
+        </article>
+        <article class="case" data-reveal>
+          <span class="case-index mono">05</span>
+          <h3 class="case-title">Stopping it in a hurry</h3>
+          <p class="case-text">Something looks off? One message &mdash; "/bot stop" &mdash; interrupts the current task instantly, right on the spot.</p>
+        </article>
+        <article class="case" data-reveal style="--o:.4">
+          <span class="case-index mono">06</span>
+          <h3 class="case-title">A song or a picture</h3>
+          <p class="case-text">"Play jazz while I work" fills your speakers from YouTube. "A fox in anime style" paints one and sends it back to your chat.</p>
+        </article>
+        <article class="case" data-reveal style="--o:.8">
+          <span class="case-index mono">07</span>
+          <h3 class="case-title">Alarms &amp; reminders</h3>
+          <p class="case-text">"Remind me at 18:00 to call back" &mdash; the PC siren rings and the alarm overlay pops up right on your screen.</p>
+        </article>
+        <article class="case" data-reveal style="--o:1.2">
+          <span class="case-index mono">08</span>
+          <h3 class="case-title">Whatever you dream up</h3>
+          <p class="case-text">The list stops at your imagination. Teach it something new anytime.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta-inner" data-reveal>
+      <div class="cta-glow" aria-hidden="true"></div>
+       <p class="cta-kicker mono">[ ALTRON / personal intelligence ]</p>
+      <h2 class="cta-title">Talking to your computer.<br><span class="green">Starts with one scan.</span></h2>
+      <p class="cta-sub">A personal AI on your computer, inside your WhatsApp. One installer, one QR scan, and you're live.</p>
+      <div class="hero-cta" style="justify-content:center;margin-bottom:24px">
+        <a href="https://github.com/thenetworK1NG/ALTRON/releases/download/v1.0.7/ALTRON-Setup-1.0.7.exe" class="btn btn-primary">
+          Download ALTRON
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </a>
+        <a href="https://github.com/thenetworK1NG/ALTRON/releases" class="btn btn-ghost" target="_blank">All Releases</a>
+      </div>
+      <p class="cta-note mono">v1.0.7 &middot; windows installer &middot; 227 MB</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="#top">
+        <span class="logo-cursor" aria-hidden="true"></span>
+         <span class="logo-word">ALTRON</span>
+      </a>
+       <p class="footer-tag">Talk to your computer. It gets things done.</p>
+      <div class="footer-status mono">
+        <span class="status-dot" aria-hidden="true"></span>
+         ALTRON &middot; private by design &middot; v1.0 is live
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-head mono">product</h4>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#security">Security camera</a>
+      <a href="#operator-mode">Operator mode</a>
+      <a href="#connect">Connect</a>
+      <a href="#usecases">Everyday uses</a>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-head mono">developers</h4>
+      <a href="#connect">Getting started</a>
+      <a href="https://github.com/thenetwork1ng" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://opencode.ai" target="_blank" rel="noopener">OpenCode</a>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-head mono">stack</h4>
+      <p class="footer-detail">Node.js &middot; TypeScript</p>
+      <p class="footer-detail">Baileys &middot; SQLite</p>
+      <p class="footer-detail">OpenCode agent</p>
+      <p class="footer-detail">Python &middot; Pollinations &middot; YouTube</p>
+      <p class="footer-detail">WhatsApp multi-device</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+     <span class="mono">&copy; 2026 ALTRON</span>
+    <span class="footer-bottom-line" aria-hidden="true"></span>
+    <span class="mono">built on opencode &middot; <span class="t-o">ok</span></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
