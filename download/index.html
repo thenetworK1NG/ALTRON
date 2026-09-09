@@ -9,6 +9,7 @@
 
     body {
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -25,18 +26,21 @@
       width: 100%;
       height: 100%;
       z-index: 0;
+      touch-action: none;
     }
 
     .container {
       position: relative;
       z-index: 1;
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1.5rem;
       user-select: none;
+      max-width: 600px;
+      width: 100%;
     }
 
     .logo {
-      font-size: 5rem;
+      font-size: clamp(3rem, 10vw, 5rem);
       font-weight: 800;
       letter-spacing: 0.3em;
       margin-bottom: 0.5rem;
@@ -45,16 +49,18 @@
     }
 
     .version {
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       color: rgba(0, 255, 100, 0.4);
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     .download-btn {
-      display: inline-block;
-      padding: 1rem 3.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 3rem;
       font-size: 1rem;
       font-weight: 700;
       letter-spacing: 0.15em;
@@ -73,15 +79,31 @@
       box-shadow: 0 0 50px rgba(0, 255, 100, 0.5), 0 0 100px rgba(0, 255, 100, 0.2);
     }
 
-    .download-btn:active {
-      transform: scale(0.96);
+    .download-btn:active { transform: scale(0.96); }
+
+    .download-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .requirements {
+      margin-top: 2rem;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+      line-height: 1.8;
+    }
+
+    .requirements strong {
+      color: rgba(0, 255, 100, 0.5);
+      font-weight: 600;
     }
 
     .back-link {
-      display: block;
-      margin-top: 2rem;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.25);
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.2);
       text-decoration: none;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -97,7 +119,14 @@
   <div class="container">
     <div class="logo">ALTRON</div>
     <div class="version">v1.0.7</div>
-    <a href="https://github.com/thenetworK1NG/ALTRON/releases/download/v1.0.7/ALTRON-Setup-1.0.7.exe" class="download-btn">DOWNLOAD</a>
+    <a href="https://github.com/thenetworK1NG/ALTRON/releases/download/v1.0.7/ALTRON-Setup-1.0.7.exe" class="download-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      DOWNLOAD
+    </a>
+    <div class="requirements">
+      <strong>Windows</strong> installer &middot; 227 MB<br>
+      Requires <strong>OpenCode</strong> installed on your PC to work
+    </div>
     <a href="../" class="back-link">&larr; back to home</a>
   </div>
 
@@ -105,21 +134,25 @@
   'use strict';
 
   var canvas = document.getElementsByTagName('canvas')[0];
+  var isMobile = window.innerWidth < 768;
+
   canvas.width  = canvas.clientWidth;
   canvas.height = canvas.clientHeight;
 
   var config = {
-      TEXTURE_DOWNSAMPLE: 1,
+      TEXTURE_DOWNSAMPLE: isMobile ? 2 : 1,
       DENSITY_DISSIPATION: 0.97,
       VELOCITY_DISSIPATION: 0.98,
       PRESSURE_DISSIPATION: 0.8,
       PRESSURE_ITERATIONS: 25,
-      CURL: 30,
+      CURL: isMobile ? 20 : 30,
       SPLAT_RADIUS: 0.005
   };
 
   var pointers = [];
   var splatStack = [];
+  var lastWidth = canvas.clientWidth;
+  var lastHeight = canvas.clientHeight;
 
   var _getWebGLContext = getWebGLContext(canvas);
   var gl = _getWebGLContext.gl;
@@ -258,16 +291,7 @@
       var dt = Math.min((Date.now() - lastTime) / 1000, 0.016);
       lastTime = Date.now();
       gl.viewport(0, 0, textureWidth, textureHeight);
-      if (splatStack.length > 0) {
-          for (var m = 0; m < splatStack.pop(); m++) {
-              var color = [Math.random() * 5 + 5, Math.random() * 8 + 2, Math.random() * 2 + 0.5];
-              var x = canvas.width * Math.random();
-              var y = canvas.height * Math.random();
-              var dx = 1000 * (Math.random() - 0.5);
-              var dy = 1000 * (Math.random() - 0.5);
-              splat(x, y, dx, dy, color);
-          }
-      }
+
       advectionProgram.bind();
       gl.uniform2f(advectionProgram.uniforms.texelSize, 1.0 / textureWidth, 1.0 / textureHeight);
       gl.uniform1i(advectionProgram.uniforms.uVelocity, velocity.first[2]);
@@ -281,10 +305,12 @@
       gl.uniform1f(advectionProgram.uniforms.dissipation, config.DENSITY_DISSIPATION);
       blit(density.second[1]);
       density.swap();
+
       for (var i = 0, len = pointers.length; i < len; i++) {
           var pointer = pointers[i];
           if (pointer.moved) { splat(pointer.x, pointer.y, pointer.dx, pointer.dy, pointer.color); pointer.moved = false; }
       }
+
       curlProgram.bind();
       gl.uniform2f(curlProgram.uniforms.texelSize, 1.0 / textureWidth, 1.0 / textureHeight);
       gl.uniform1i(curlProgram.uniforms.uVelocity, velocity.first[2]);
@@ -349,7 +375,14 @@
   }
 
   function resizeCanvas() {
-      (canvas.width !== canvas.clientWidth || canvas.height !== canvas.clientHeight) && (canvas.width = canvas.clientWidth, canvas.height = canvas.clientHeight, initFramebuffers());
+      var w = canvas.clientWidth;
+      var h = canvas.clientHeight;
+      if (w === lastWidth && h === lastHeight) return;
+      lastWidth = w;
+      lastHeight = h;
+      canvas.width = w;
+      canvas.height = h;
+      initFramebuffers();
   }
 
   var count = 0;
@@ -388,6 +421,10 @@
       }
   }, false);
 
+  canvas.addEventListener('touchend', function () {
+      for (var i = 0; i < pointers.length; i++) pointers[i].down = false;
+  });
+
   var ambientColors = [
       [0.15, 0.85, 0.25],
       [0.2, 0.9, 0.2],
@@ -400,12 +437,22 @@
       ambientIndex++;
       var x = canvas.width * (0.2 + Math.random() * 0.6);
       var y = canvas.height * (0.2 + Math.random() * 0.6);
-      var dx = 80 * (Math.random() - 0.5);
-      var dy = 80 * (Math.random() - 0.5);
+      var force = isMobile ? 50 : 100;
+      var dx = force * (Math.random() - 0.5);
+      var dy = force * (Math.random() - 0.5);
       splat(x, y, dx, dy, c);
-      setTimeout(ambientSmoke, 2000 + Math.random() * 2000);
+      var delay = isMobile ? 3000 + Math.random() * 3000 : 2000 + Math.random() * 2000;
+      setTimeout(ambientSmoke, delay);
   }
   ambientSmoke();
+
+  window.addEventListener('orientationchange', function () {
+      setTimeout(function () {
+          canvas.width = canvas.clientWidth;
+          canvas.height = canvas.clientHeight;
+          initFramebuffers();
+      }, 200);
+  });
   </script>
 </body>
 </html>
